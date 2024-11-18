@@ -13,3 +13,7 @@ def print_diamond_pattern(n):
 # Change 'n' to control the size of the diamond pattern
 n = 10
 print_diamond_pattern(n)
+
+print("\n\n\n")
+n = 20
+print_diamond_pattern(n)
