@@ -1,1 +1,1 @@
-Print("Hey Dibyendu !!!")
+print("Hey Dibyendu !!!")
