@@ -17,3 +17,7 @@ print_diamond_pattern(n)
 print("\n\n\n")
 n = 20
 print_diamond_pattern(n)
+
+print("\n\n\n")
+n = 50
+print_diamond_pattern(n)
