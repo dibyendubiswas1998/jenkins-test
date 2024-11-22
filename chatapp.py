@@ -1,12 +1,26 @@
 import streamlit as st
-from transformers import AutoModelForCausalLM, AutoTokenizer
-import torch
+import numpy as np
+import time
 
-# Load your fine-tuned model and tokenizer
-model_name = "path_to_your_fine_tuned_model"  # Replace with your model path or name
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(model_name)
+# Example-02:
+# with st.chat_message("user"):
+#     st.write("Hello 👋")
+#     # st.chat_input("Enter Message: ")
 
+########################################
+# Example-02:
+# message = st.chat_message("assistant")
+# message.write("Hello human")
+# message.bar_chart(np.random.randn(30, 3))
+
+########################################
+# Example-03:
+# prompt = st.chat_input("Say something")
+# if prompt:
+#     st.write(f"User has sent the following prompt: {prompt}")
+
+########################################
+# Example-4:
 st.header("Chat Bot 💬 📚")
 
 # Initialize chat history
@@ -15,17 +29,10 @@ if "messages" not in st.session_state:
         {"role": "assistant", "content": "Ask me a question about Streamlit's open-source Python library!"}
     ]
 
-# Display chat messages from history on app rerun
+# # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
-
-# Function to generate a response from the model
-def generate_response(prompt):
-    inputs = tokenizer.encode(prompt, return_tensors="pt")
-    outputs = model.generate(inputs, max_length=150, num_return_sequences=1)
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return response
 
 # React to user input or Get the User input
 if prompt := st.chat_input("Ask Something"):
@@ -35,9 +42,8 @@ if prompt := st.chat_input("Ask Something"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Generate the response
-    response = generate_response(prompt)
-    
+    # Get the Response or Generate the response:
+    response = f"Echo: Hello there! How can I assist you today?"
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
